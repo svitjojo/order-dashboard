@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { PlusIcon, TruckIcon } from 'lucide-react';
+import { TruckIcon } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
