@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# Order Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Order Dashboard is a modern web application for managing and tracking orders, built with React, TypeScript, and Vite. It features a modular architecture based on Feature-Sliced Design (FSD) for scalability and maintainability.
 
-Currently, two official plugins are available:
+## 🚀 Setup Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Install dependencies:**
 
-## React Compiler
+   ```bash
+   npm install
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Start development server:**
 
-## Expanding the ESLint configuration
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🏗️ Architectural Decisions
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Feature-Sliced Design (FSD):**
+  - The codebase is organized by domain features (entities, features, widgets, pages, shared) to improve modularity, scalability, and team collaboration.
+  - Each feature encapsulates its own logic, UI, and state management.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **State Management:**
+  - Uses Redux Toolkit for global state and React Hook Form for form state.
+  - Zod is used for schema validation.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Styling:**
+  - Tailwind CSS for utility-first styling.
+  - shadcn/ui and Lucide for UI components and icons.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Routing:**
+  - React Router DOM for client-side routing.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Other Libraries:**
+  - clsx and class-variance-authority for conditional class management.
+  - sonner for notifications.
+  - uuid for unique IDs.
+
+## 🤔 Reasoning Behind Decisions
+
+- **FSD** was chosen to keep the codebase maintainable as it grows, making it easier to onboard new developers and isolate changes.
+- **Redux Toolkit** simplifies state logic and reduces boilerplate. Worked with it before.
+
+## 🛠️ Improvements for the Future
+
+1. **Revalidation on stop address fields:**
+   - Currently, there is no revalidation when editing stop address fields, which can disappoint users. Adding real-time validation would improve UX.
+2. **Clean up component code:**
+   - Some components could be refactored for better readability and maintainability.
+3. **Test every flow:**
+   - Increase test coverage and ensure all user flows are robustly tested.
+
+---
+
+Feel free to contribute or suggest further improvements!
